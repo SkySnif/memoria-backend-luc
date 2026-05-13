@@ -11,7 +11,7 @@
     "name": "wisepanda.fr",
     "email": "contact@wisepanda.fr"
   },
-  "packageManager": "pnpm@10.30.2",
+  "packageManager": "pnpm@11.1.1",
   "license": "MIT",
   "description": "API REST - Coffre-fort numérique personnel (Deuxième Cerveau)",
   "main": "dist/server.js",
@@ -35,8 +35,8 @@
     "db:init": "sh ./scripts/init_db.sh",
     "db:reset": "sh ./scripts/reset_db.sh",
     "db:run": "sh ./scripts/run_sql.sh",
-    "gen:secrets": "tsx ./scripts/gen-secrets.ts",
-    "gen:secrets:prod": "tsx ./scripts/gen-secrets.ts --prod",
+    "gen:secrets": "tsx ./scripts/gen-secrets.js",
+    "gen:secrets:prod": "tsx ./scripts/gen-secrets.js --prod",
     "prepare": "husky"
   },
   "dependencies": {
