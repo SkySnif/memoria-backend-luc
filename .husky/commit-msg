@@ -1,0 +1,33 @@
+#!/usr/bin/env sh
+
+echo "🔍 Validating commit message..."
+
+pnpm commitlint --edit "$1" || {
+  commit_msg=$(cat "$1")
+
+  echo ""
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "❌ COMMIT REJECTED: Invalid message format"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo ""
+  echo "📝 Your message:"
+  echo "   \"$commit_msg\""
+  echo ""
+  echo "📖 REQUIRED FORMAT: <type>(<scope>): <description>"
+  echo ""
+  echo "   Types: feat, fix, docs, style, refactor, perf, test,"
+  echo "          chore, build, ci, revert"
+  echo "   Scope (mandatory): the affected module"
+  echo ""
+  echo "✅ Examples:"
+  echo "   feat(schemas): add User Zod schemas"
+  echo "   fix(router): redirect to login on 401"
+  echo "   chore(deps): bump vite to 6.1"
+  echo ""
+  echo "🔄 Fix the last commit:"
+  echo "   git commit --amend"
+  echo ""
+  exit 1
+}
+
+echo "✅ Commit message is valid!"

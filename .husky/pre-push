@@ -1,0 +1,67 @@
+#!/usr/bin/env sh
+# Git Hook: pre-push
+# 1. Block direct push to main/develop
+# 2. Validate branch name (defense in depth vs. post-checkout)
+# 3. Run type-check + tests
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+echo "🚀 Pre-push validation for: $BRANCH"
+echo ""
+
+# ─── 1. Block direct push to protected branches ─────────────────────
+if [ "$BRANCH" = "main" ] || [ "$BRANCH" = "develop" ]; then
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo "🛡️  PROTECTED BRANCH: $BRANCH"
+  echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+  echo ""
+  echo "❌ Direct push to '$BRANCH' is FORBIDDEN."
+  echo ""
+  echo "✅ Use a feature branch + PR workflow:"
+  echo "   git checkout -b feature/my-feature develop"
+  echo "   git push -u origin feature/my-feature"
+  echo "   → Open a PR to merge into develop"
+  echo ""
+  exit 1
+fi
+
+# ─── 2. Validate branch name format ─────────────────────────────────
+PATTERN="^(feature|fix|hotfix|docs|style|refactor|perf|test|build|ci|chore|release)/[a-z0-9][a-z0-9-]*[a-z0-9]$"
+
+if ! echo "$BRANCH" | grep -qE "$PATTERN"; then
+  echo "❌ INVALID BRANCH NAME: $BRANCH"
+  echo ""
+  echo "📖 Format: <type>/<description> (see post-checkout for details)"
+  echo "🔧 Rename: git branch -m $BRANCH <type>/<description>"
+  echo ""
+  exit 1
+fi
+
+echo "✅ Branch name validated"
+echo ""
+
+# ─── 3. Type-check + tests ──────────────────────────────────────────
+echo "🧠 Type-checking..."
+pnpm typecheck || {
+  echo ""
+  echo "❌ TYPE-CHECK FAILED — Push aborted"
+  echo "   Fix TypeScript errors before pushing."
+  exit 1
+}
+echo "✅ Type-check passed"
+echo ""
+
+echo "🧪 Running tests..."
+pnpm test:run || {
+  echo ""
+  echo "❌ TESTS FAILED — Push aborted"
+  echo "   Fix failing tests before pushing."
+  exit 1
+}
+echo "✅ Tests passed"
+echo ""
+
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "✅ All checks passed — Push authorized for: $BRANCH"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+exit 0
