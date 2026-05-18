@@ -1,5 +1,5 @@
 -- ============================================================================
--- TODO ÉTAPE 2 (DCL) : SÉCURISATION ET RÔLES (à exécuter avec le rôle postgres)
+-- TODO ÉTAPE 2 (DCL) : SÉCURISATION ET RÔLES (à exécuter avec le rôle skydev)
 -- ============================================================================
 
 -- Création du rôle applicatif (SANS mot de passe)

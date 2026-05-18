@@ -1,4 +1,4 @@
-CREATE VIEW v_item_shares AS
+CREATE OR REPLACE VIEW  v_item_shares AS
 SELECT
   s.id_share,
   s.item_id,

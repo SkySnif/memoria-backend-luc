@@ -21,9 +21,9 @@ GRANT
 ON ALL SEQUENCES IN SCHEMA public
 TO app_memoria;
 
--- Tables FUTURES créées par postgres
+-- Tables FUTURES créées par skydev
 ALTER DEFAULT PRIVILEGES
-FOR ROLE postgres
+FOR ROLE skydev
 IN SCHEMA public
 GRANT
     SELECT,
@@ -33,9 +33,9 @@ GRANT
 ON TABLES
 TO app_memoria;
 
--- Séquences FUTURES créées par postgres
+-- Séquences FUTURES créées par skydev
 ALTER DEFAULT PRIVILEGES
-FOR ROLE postgres
+FOR ROLE skydev
 IN SCHEMA public
 GRANT
     USAGE,

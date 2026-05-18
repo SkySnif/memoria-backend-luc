@@ -6,7 +6,7 @@
 -- ============================================================================
 
 -- ============================================================================
--- TODO ÉTAPE 1 (DCL/DDL) : CRÉATION DE LA BASE DE DONNÉES (à exécuter avec le rôle postgres)
+-- TODO ÉTAPE 1 (DCL/DDL) : CRÉATION DE LA BASE DE DONNÉES (à exécuter avec le rôle skydev)
 -- ============================================================================
 
 -- Création de la base avec support UTF8 complet

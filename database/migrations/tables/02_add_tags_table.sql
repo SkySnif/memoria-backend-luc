@@ -27,4 +27,4 @@ COMMENT ON TABLE tags IS 'Mots-clés personnalisés créés par les utilisateurs
 COMMENT ON COLUMN tags.tag_name IS 'Nom du tag (insensible à la casse via CITEXT)';
 
 -- Application du trigger
-CREATE TRIGGER set_timestamp_tags BEFORE UPDATE ON tags FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();
+-- CREATE TRIGGER set_timestamp_tags BEFORE UPDATE ON tags FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();

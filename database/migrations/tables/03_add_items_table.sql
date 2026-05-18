@@ -43,4 +43,4 @@ COMMENT ON COLUMN items.thumbnail_url IS 'URL de l image stockée sur service ex
 COMMENT ON COLUMN items.metadata IS 'Métadonnées flexibles en JSONB : {"isbn": "xxx", source_url": "xxx", "duration": "45min", "channel": "xxx", "coordinates": {...}}';
 
 -- Application du trigger
-CREATE TRIGGER set_timestamp_items BEFORE UPDATE ON items FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();
+-- CREATE TRIGGER set_timestamp_items BEFORE UPDATE ON items FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();

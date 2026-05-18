@@ -35,4 +35,4 @@ COMMENT ON COLUMN shares.access_config IS 'Configuration flexible du partage :
 }';
 
 -- Application du trigger
-CREATE TRIGGER set_timestamp_shares BEFORE UPDATE ON shares FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();
+-- CREATE TRIGGER set_timestamp_shares BEFORE UPDATE ON shares FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();

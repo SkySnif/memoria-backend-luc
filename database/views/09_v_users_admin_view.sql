@@ -1,4 +1,4 @@
-CREATE VIEW v_users_admin AS
+CREATE OR REPLACE VIEW v_users_admin AS
 SELECT
   id_user,
   email,

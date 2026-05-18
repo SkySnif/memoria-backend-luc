@@ -1,5 +1,5 @@
 -- ============================================================================
---  TODO ÉTAPE 3-A : EXTENSIONS (à exécuter avec le rôle postgres)
+--  TODO ÉTAPE 3-A : EXTENSIONS (à exécuter avec le rôle skydev)
 -- ============================================================================
 
 -- Extensions modernes PostgreSQL

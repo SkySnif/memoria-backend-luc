@@ -37,4 +37,4 @@ COMMENT ON COLUMN users.gdpr_consent IS 'Consentement RGPD obligatoire pour cré
 COMMENT ON COLUMN users.gdpr_consent_date IS 'Date et heure précises du consentement RGPD';
 
 -- Application du trigger
-CREATE TRIGGER set_timestamp_users BEFORE UPDATE ON users FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();
+-- CREATE TRIGGER set_timestamp_users BEFORE UPDATE ON users FOR EACH ROW EXECUTE PROCEDURE trigger_set_timestamp();
